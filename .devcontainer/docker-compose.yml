@@ -18,6 +18,8 @@ services:
       POSTGRES_PASSWORD: movingworld
       POSTGRES_USER: movingworld
       POSTGRES_DB: movingworld
+    ports:
+      - 5432:5432
 
 volumes:
   postgres-data:
