@@ -1,17 +1,16 @@
-# Use the official Python image
 FROM python:3.11
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy your app files into the container
+# Copy only requirements first, install dependencies
+COPY requirements.txt /app/
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+
+# Now copy the rest of your app
 COPY . /app
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Expose the port FastAPI runs on
 EXPOSE 8000
 
-# Run FastAPI
-# CMD ["fastapi", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT [ "bash", "/entrypoint.sh" ]

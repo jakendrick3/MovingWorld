@@ -9,6 +9,8 @@ services:
       - DISPLAY=host.docker.internal:0.0
     volumes:
       - ../:/app:cached
+      - hf-cache:/root/.cache/huggingface
+      - python-packages:/usr/local/lib/python3.11/site-packages
     network_mode: service:db
     command: sleep infinity
 
@@ -26,3 +28,5 @@ services:
 
 volumes:
   postgres-data:
+  hf-cache:
+  python-packages:
