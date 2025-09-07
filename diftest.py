@@ -5,5 +5,5 @@ pipeline = DiffusionPipeline.from_pretrained("stable-diffusion-v1-5/stable-diffu
 print("Loading model to GPU...")
 pipeline.to("cuda")
 print("Generating image...")
-image = pipeline("An image of a squirrel in Picasso style").images[0]
-image.save("squirrel_picasso.png")
+image = pipeline("A Fantasy world map with intricate details. It should have mountain ranges, rivers, a desert, and forests.").images[0]
+image.save("fantasy_world_map.png")

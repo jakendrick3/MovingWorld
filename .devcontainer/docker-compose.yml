@@ -13,6 +13,13 @@ services:
       - python-packages:/usr/local/lib/python3.11/site-packages
     network_mode: service:db
     command: sleep infinity
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 
   db:
     image: postgres:latest
